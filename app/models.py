@@ -1,3 +1,4 @@
+# This is really just database stuff I hate the name models
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 
