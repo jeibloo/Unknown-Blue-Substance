@@ -19,6 +19,7 @@ flask = "*"
 flask-sqlalchemy = "*"
 tweepy = "*"
 python-decouple = "*"
+flask-wtf = "*"
 
 [requires]
 python_version = "3.7"

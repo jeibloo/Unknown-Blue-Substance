@@ -105,5 +105,5 @@ venv.bak/
 
 # misc
 ./instance
-./instance/config.py
+.env
 .vs*
