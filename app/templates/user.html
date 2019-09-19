@@ -2,11 +2,11 @@
 {% block content %}
 <div id="user-info">
     <h1>{{ title }}</h1>
-    <p>{{ message }}</p>
 </div>
 <div class="nes-container is-rounded is-dark" id='user-tweets'>
     {% for tweet in tweets %}
     <span class="stack">{{ tweet.text }}</span>
+    <br><br>
     {% endfor %}
 </div>
 {% endblock %}

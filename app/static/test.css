@@ -39,3 +39,6 @@ li {
     position: fixed;
     bottom: 0;
 }
+#foottext {
+    font-size: 75%;
+}
