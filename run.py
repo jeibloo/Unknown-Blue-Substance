@@ -1,3 +1,5 @@
 # Run test server
 from app import app
-app.run(host='127.0.0.10', port=666, debug=True)
+
+if __name__ == "__main__":
+    app.run(debug=True)

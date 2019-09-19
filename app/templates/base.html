@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>{{title}}</title>
+    <link rel="stylesheet" href="/static/test.css">
+  </head>
+  <body>
+    <h1> Bask in the Glory of Flask </h1>
+    <p> Flask is Super "Fun" :} </p>
+    <hr>
+    <article style="padding: 2em">
+      {% block content %}
+        <div>
+          <h1>{{ title }}</h1>
+          <form action="/compare" method="POST">
+            <select name="user1">
+              {% for user in users %}
+              <option value="{{ user.name }}">{{ user.name }}</option>
+              {% endfor %}
+            </select>
+            <select name="user2">
+              {% for user in users %}
+              <option value="{{ user.name }}">{{ user.name }}</option>
+              {% endfor %}
+            </select>
+            <input type='text' name='tweet_text' placeholder="tweet text to predict">
+            <input type="submit" value="Compare Users">
+          </form>
+        </div>
+        <div>
+          <h2>Users</h2>
+          {% for user in users %}
+          <a href='/user/{{user.name}}'><span class='stack'>{{user.name}}</span></a>
+          {% endfor %}
+          <form action="/user" method="POST">
+            <input type="text" name="user_name" placeholder="ex: jsn404">
+            <input type="submit" value="Add User">
+          </form>
+        </div>
+      {% endblock %}
+    </article>
+    <div>
+      <button>
+        <a href='/reset'> RESET </a>
+      </button>
+      <button>
+        <a href='/update'> UPDATE </a>
+      </button>
+    </div>
+  </body>
+</html>

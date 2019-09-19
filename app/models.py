@@ -9,18 +9,20 @@ db = SQLAlchemy(app)
 
 # Create user
 class User(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(15), unique=False, nullable=False)
+    id = db.Column(db.BigInteger, primary_key=True)
+    name = db.Column(db.String(15), nullable=False)
+    newest_tweet_id = db.Column(db.BigInteger)
 
     def __repr__(self):
         return f'<User {self.name}>'
 
 
 class Tweet(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    text = db.Column(db.Unicode(280))
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'),
+    id = db.Column(db.BigInteger, primary_key=True)
+    text = db.Column(db.Unicode(500))
+    user_id = db.Column(db.BigInteger, db.ForeignKey('user.id'),
                         nullable=False)
+    embedding = db.Column(db.PickleType, nullable=False)
     # Here we define the relationship betwixt user and tweet
     user = db.relationship('User', backref=db.backref('tweets', lazy=True))
 
