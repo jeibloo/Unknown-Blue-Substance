@@ -2,51 +2,88 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>{{title}}</title>
+    <title>Twitter Comparitour Extraordinaire</title>
+    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet"/>
+    <link href="https://unpkg.com/nes.css@2.2.0/css/nes.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="/static/test.css">
+    <style>
+      html, body, pre, code, kbd, samp {
+        font-family: 'Press Start 2P'
+      }
+    </style>
   </head>
   <body>
-    <h1> Bask in the Glory of Flask </h1>
-    <p> Flask is Super "Fun" :} </p>
-    <hr>
-    <article style="padding: 2em">
-      {% block content %}
-        <div>
-          <h1>{{ title }}</h1>
-          <form action="/compare" method="POST">
-            <select name="user1">
-              {% for user in users %}
-              <option value="{{ user.name }}">{{ user.name }}</option>
-              {% endfor %}
-            </select>
-            <select name="user2">
-              {% for user in users %}
-              <option value="{{ user.name }}">{{ user.name }}</option>
-              {% endfor %}
-            </select>
-            <input type='text' name='tweet_text' placeholder="tweet text to predict">
-            <input type="submit" value="Compare Users">
-          </form>
+    <h1 style="text-align: center; padding-top: 2rem;">Tweet Prediction Time </h1>
+    <h2 style="text-align: center;">Flask is Super "Fun" :} </h3>
+    <div class="row">
+      <div class="column">
+        {% block content %}
+          <div id="user-input" class="nes-container is-rounded nes-pointer">
+            <h2>Users</h2>
+            {% for user in users %}
+            <a href='/user/{{user.name}}'><span class='stack'>{{user.name}}</span></a>
+            {% endfor %}
+            <form action="/user" method="POST">
+              <input style="margin-top: 1rem;" class="nes-input" type="text" name="user_name" placeholder="ex: jsn404">
+              <input style="margin-top: 2rem;" class="nes-btn is-primary" type="submit" value="Add User">
+            </form>
+          </div>
+          <div id="compare" class="nes-container nes-pointer with-title is-rounded is-centered">
+            <p class="title">Comparison</p>
+            <form action="/compare" method="POST">
+              <div class="nes-select">
+                <select style="margin-top: 1rem;" name="user1">
+                  {% for user in users %}
+                  <option value="{{ user.name }}">{{ user.name }}</option>
+                  {% endfor %}
+                </select>
+              </div>
+              <div class="nes-select">
+                <select style="margin-top: 1rem;" name="user2">
+                  {% for user in users %}
+                  <option value="{{ user.name }}">{{ user.name }}</option>
+                  {% endfor %}
+                </select>
+              </div>
+              <div style="margin-top: 1rem;" class="nes-field">
+                <input class="nes-input" type='text' name='tweet_text' placeholder="put sentence here!">
+              </div>
+              <input style="margin-top: 1rem;" class="nes-btn" type="submit" value="Compare Users">
+            </form>
+          </div>
+        {% endblock %}
+      </div>
+      <div class="column">
+        <div class="nes-container is-rounded is-centered">
+          <h3>{{ title }}</h5>
+          <div class="lists">
+            <ul class="nes-list is-disc">
+              <li><p>This small test app analyzes Twitter
+                users.
+              </p></li>
+              <li><p>It takes their latest hundred or so
+                tweets and crunches a few numbers.</p></li>
+              <li><p>You can test to see who is more likely
+                to say what by typing in a sentence over there on
+                the left.
+              </p></li>
+            </ul>
+          </div>
         </div>
-        <div>
-          <h2>Users</h2>
-          {% for user in users %}
-          <a href='/user/{{user.name}}'><span class='stack'>{{user.name}}</span></a>
-          {% endfor %}
-          <form action="/user" method="POST">
-            <input type="text" name="user_name" placeholder="ex: jsn404">
-            <input type="submit" value="Add User">
-          </form>
+        <div id="sys-but" class="is-centered">
+          <a class="nes-btn is-error" href='/reset'> RESET </a>
+          <a class="nes-btn is-warning" href='/update'> UPDATE </a>
         </div>
-      {% endblock %}
-    </article>
-    <div>
-      <button>
-        <a href='/reset'> RESET </a>
-      </button>
-      <button>
-        <a href='/update'> UPDATE </a>
-      </button>
+      </div>
+    </div>
+    <div class="footer nes-pointer">
+      <section class="icon-list">
+        <p>Jason Nova</p>
+        <a href="https://twitter.com/jsn404" class="nes-icon twitter is-medium"></a>
+        <a href="https://github.com/jeibloo" class="nes-icon github is-medium"></a>
+        <a href="https://linkedin.com/in/jason-nova" class="nes-icon linkedin is-medium"></a>
+        <a href="mailto:jasonnova4@gmail.com" class="nes-icon gmail is-medium"></a>
+      </section>
     </div>
   </body>
 </html>

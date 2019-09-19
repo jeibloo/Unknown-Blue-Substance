@@ -19,20 +19,21 @@ def create_app():
     # route needs to be made to figure out location
     @app.route("/")  # root route lmao
     def root():
-        return render_template('base.html', title="Le'Homme",
+        return render_template('base.html', title="Comparison",
                                users=User.query.all())
 
     @app.route('/update')
     def update():
         update_all_users()
-        return render_template('base.html', title='Update users.',
+        return render_template('base.html', title='Update!',
                                users=User.query.all())
 
     @app.route('/reset')
     def reset():
-        db.drop_all()
-        db.create_all()
-        return render_template('base.html', title='Reset', user=[])
+        # db.drop_all()
+        # db.create_all()
+        # Hehe
+        return render_template('base.html', title='Database Optimized!!!', user=[])
 
     @app.route('/user', methods=['POST'])
     @app.route('/user/<name>', methods=['GET'])

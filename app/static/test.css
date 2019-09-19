@@ -1,6 +1,41 @@
-body {
-    background-color: antiquewhite;
-}
 h1 {
     font-size: 200%;
+}
+li {
+    text-align: left;
+}
+.title {
+    margin-bottom: 1rem;
+}
+.subtitle {
+    text-align: left;
+    padding: 1rem;
+}
+.column {
+    float: left;
+    width: 35%;
+    margin: 5%;
+}
+.row::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+#sys-but {
+    text-align: center;
+    justify-content: center;
+    padding-top: 10rem;
+}
+
+#compare{
+    margin-top: 5rem;
+}
+
+.nes-container.is-rounded.with-title.is-centered>.title {
+    margin: -2rem auto 1rem;
+}
+.footer {
+    padding: 3rem;
+    position: fixed;
+    bottom: 0;
 }
