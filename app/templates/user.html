@@ -4,7 +4,7 @@
     <h1>{{ title }}</h1>
     <p>{{ message }}</p>
 </div>
-<div id='user-tweets'>
+<div class="nes-container is-rounded is-dark" id='user-tweets'>
     {% for tweet in tweets %}
     <span class="stack">{{ tweet.text }}</span>
     {% endfor %}
