@@ -38,6 +38,8 @@ def create_app():
     @app.route('/user', methods=['POST'])
     @app.route('/user/<name>', methods=['GET'])
     def user(name=None, message=''):
+        # Make the name either the param or get it from the html user_name
+        # using that app.route called '/user' w/ the POST method
         name = name or request.values['user_name']
         try:
             if request.method == 'POST':
@@ -51,11 +53,15 @@ def create_app():
 
     @app.route('/compare', methods=['POST'])
     def compare(message=''):
+        # Put user1 and user2 in the html (the chosen values)
+        # into user1 and user2 here in this function
         user1, user2 = sorted([request.values['user1'],
                                request.values['user2']])
         if user1 == user2:
             message = "Can't compare themselves"
         else:
+            # Grabs the name -> tweet_text from that input
+            # and puts it in tweet_text
             tweet_text = request.values['tweet_text']
             confidence = int(predict_user(user1, user2, tweet_text)*100)
             if confidence >= 50:
