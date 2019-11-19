@@ -1,2 +1,2 @@
-# Unknown Blue Substance
-### The greatest non-program in comparing nonsense to nonsense.
+# Twitter-Basilica-Comparitor
+### See which custom made tweet belongs to who based on their previous tweets!
